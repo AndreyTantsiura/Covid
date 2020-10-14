@@ -100,6 +100,8 @@ const tabs =() => {
 
 		tabsLinkTarget.classList.add('tabs_link_active')//добавляем класс active кликнутому елементу
 		tabsPaneTarget.classList.add('tabs_pane_show')//добавляем класс ..show  кликнутой панели
+
+		barchartOutput()
 	}
 
 	elemTabs.addEventListener('click', (e) => {//вешаем событие клик
@@ -206,4 +208,3 @@ const barchartOutput = () => {
 
 	document.querySelector('.infographic-barchart').innerHTML = barchartGenerate(arrForBarchart, confirmedMax)//забрасываем результат генерации barchartGenerate в который передаём массив arrForBarchart и confirmedMax
 }
-
