@@ -161,7 +161,7 @@ const sortClick = async () => {
 
 		sortRegion === 'ukraine' ? uaElem.innerHTML = htmlGenerate(arrForSort) : worldElem.innerHTML = htmlGenerate(arrForSort)
 
-		if (sortRegion === 'ukraune') {
+		if (sortRegion === 'ukraine') {
 			if (document.querySelector('#ukraine .sort.active') !== null) {
 				document.querySelector('#ukraine .sort.active').classList.remove('active')//убираем класс active у остальных елементов если они у них были
 			}
