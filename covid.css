@@ -21,7 +21,7 @@ body {
 }
 .tabs {
 	border-bottom: 1px solid #26354B;
-	width: 60%;
+	width: 75%;
 }
 .tabs_nav {
 	display: flex;
@@ -79,8 +79,11 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 }
-.table-cell-description {}
+.confirmed_day .table-cell-description {
+	font-size: 0.8em;
+}
 .sort-wrapper {
 	width: 10px;
 	height: 25px;

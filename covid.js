@@ -2,7 +2,7 @@
 // 	.then(response => response.json())
 // 	// .then(json => {return json})
 
-let ua, world
+let ua, world, uaYesterday, worldYesterday
 const uaElem = document.querySelector('.table-ua .table_body')
 const worldElem = document.querySelector('.table-world .table_body')
 const elemDate = document.getElementById('datePicker')
@@ -19,6 +19,8 @@ Date.prototype.toDateInputValue = function() {//функция коррекци�
 let todayDate = new Date().toDateInputValue()//new Date = this
 elemDate.value = todayDate//забрасываем нашу дату корректируемую по гринвичу
 elemDate.setAttribute('max', todayDate)//методом мах ограничиваем диапазон выбора даты
+
+let yesterdayDate = new Date(Date.now()-86400000).toDateInputValue()
 
 const getAPI = async(date) => {//передаём date котрый мы вызывали в dataOutput и передавали todayDate
 	const url = 'https://api-covid19.rnbo.gov.ua/data?to=' + date
@@ -43,7 +45,6 @@ const getAPI = async(date) => {//передаём date котрый мы выз�
 
 // getData()
 
-
 const htmlGenerate = (region) => {
 	let resultTable = ``
 
@@ -53,22 +54,33 @@ const htmlGenerate = (region) => {
 		resultTable += `<td class = "table-cell">${region[row].confirmed}</td>`
 		resultTable += `<td class = "table-cell">${region[row].deaths}</td>`
 		resultTable += `<td class = "table-cell">${region[row].recovered}</td>`
+		resultTable += `<td class = "table-cell">${region[row].confirmed_day}</td>`
 		resultTable += `</tr>`
 	}
 	return resultTable
 }
+
+const defaultSort = async() => {
+	let elem = document.querySelector('.active')
+	let sortType = elem.getAttribute('data-sort')
+	sortData(sortType, elem)
+}
+
 const dataOutput = async(date) => {
 	const result = await getAPI(date)
+	
 	ua = result.ukraine.map((elem) => {return {'region': elem.label.uk,
-													'confirmed': elem.confirmed,
-													'deaths': elem.deaths,
-													'recovered': elem.recovered}
-												})
+															'confirmed': elem.confirmed,
+															'deaths': elem.deaths,
+															'recovered': elem.recovered}
+														})
 	world = result.world.map((elem) => {return {'region': elem.label.uk,
-													'confirmed': elem.confirmed,
-													'deaths': elem.deaths,
-													'recovered': elem.recovered}
-												})
+															'confirmed': elem.confirmed,
+															'deaths': elem.deaths,
+															'recovered': elem.recovered}
+														})
+	
+	defaultSort()
 
 	uaElem.innerHTML = htmlGenerate(ua)//забрасываем в таблицу на странице данные Ukraine
 	worldElem.innerHTML = htmlGenerate(world)//забрасываем в таблицу на странице данные World
@@ -77,6 +89,21 @@ const dataOutput = async(date) => {
 }
 
 dataOutput(todayDate)
+
+const dataOutputYesterday = async(date) => {
+	const result = await getAPI(date)
+	
+	uaYesterday = result.ukraine.map((elem) => {return {'region': elem.label.uk,
+															'confirmed': elem.confirmed}
+														})
+	worldYesterday = result.world.map((elem) => {return {'region': elem.label.uk,
+															'confirmed': elem.confirmed}
+														})
+	console.log(uaYesterday[0].confirmed)
+	console.log(ua[0].confirmed)
+}
+dataOutputYesterday(yesterdayDate)
+
 
 //Работа с табами
 const tabs =() => {
@@ -116,15 +143,15 @@ const tabs =() => {
 
 tabs()
 
-const sortClick = async () => {
-	const sortButtons = document.querySelectorAll('.sort')
-	for (var i = 0; i < sortButtons.length; i++) {
-		sortButtons[i].addEventListener('click', (e) => {
-			let sortType = e.target.getAttribute('data-sort')//извлекаем атрибут для параметров сортировки
-			sortData(sortType, e.target)
-		})
+	const sortClick = async () => {
+		const sortButtons = document.querySelectorAll('.sort')
+		for (var i = 0; i < sortButtons.length; i++) {
+			sortButtons[i].addEventListener('click', (e) => {
+				let sortType = e.target.getAttribute('data-sort')//извлекаем атрибут для параметров сортировки
+				sortData(sortType, e.target)
+			})
+		}
 	}
-} 
 
 	const sortData = (sortType, elemSort) => {
 		let sortTypeArr = sortType.split('-')//ukraine,confirmed,up
@@ -133,7 +160,6 @@ const sortClick = async () => {
 			sortDirection = sortTypeArr[2]//up
 
 		let arrForSort = sortRegion === 'ukraine' ? ua : world//выбираем массив для сортировки
-
 		// arrForSort.sort((a, b) => {
 		// 	if (sortDirection === 'up') {
 		// 		return a[sortField] > b[sortField] ? 1 : -1
@@ -173,6 +199,8 @@ const sortClick = async () => {
 		}
 
 		elemSort.classList.add('active')//присваиваем кликнотому елементу класс active
+
+		barchartOutput()
 	}
 
 sortClick()
