@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,140 +8,142 @@
 	<link rel="stylesheet" type="text/css" href="covid.css">
 	<title>Covid</title>
 </head>
-<body>
-<div class="container main">
-	<div class="container container-calendar">
-		<input type="date" id="datePicker" min="2020-01-22">
-	</div>
-	<div class="tabs">
-		<div class="tabs_nav">
-			<a href="#ukraine" class="tabs_link tabs_link_active">Ukraine</a>
-			<a href="#world" class="tabs_link">World</a>
-		</div>
-		<div class="tabs_content">
-			<div id="ukraine" class="tabs_pane tabs_pane_show">
-				<h2>Ukraine</h2>
-				<div class="container">
-					<table class="table table-ua">
-						<thead class="table_head">
-							<tr class="table-row table_head-row">
-								<td class="table-cell table_head-cell region">
-									<div class="inner">
-										<span class="table-cell-description">Область</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='ukraine-region-up'></span>
-											<span class="sort sort-down" data-sort='ukraine-region-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell confirmed">
-									<div class="inner">
-										<span class="table-cell-description">Підтверджено</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='ukraine-confirmed-up'></span>
-											<span class="sort active sort-down" data-sort='ukraine-confirmed-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell deaths">
-									<div class="inner">
-										<span class="table-cell-description">Померло</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='ukraine-deaths-up'></span>
-											<span class="sort sort-down" data-sort='ukraine-deaths-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell recovered">
-									<div class="inner">
-										<span class="table-cell-description">Одужало</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='ukraine-recovered-up'></span>
-											<span class="sort sort-down" data-sort='ukraine-recovered-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell confirmed_day">
-									<div class="inner">
-										<span class="table-cell-description">Підтверджено за минулу добу</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='ukraine-recovered-up'></span>
-											<span class="sort sort-down" data-sort='ukraine-recovered-down'></span>
-										</span>
-									</div>
-								</td>
-							</tr>
-						</thead>
-						<tbody class="table_body"></tbody>
-					</table>
-				</div>
-			</div>
-			<div id="world" class="tabs_pane">
-				<h2>World</h2>
-				<div class="container">
-					<table class="table table-world">
-						<thead class="table_head">
-							<tr class="table-row table_head-row">
-								<td class="table-cell table_head-cell region">
-									<div class="inner">
-										<span class="table-cell-description">Країна</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='world-region-up'></span>
-											<span class="sort sort-down" data-sort='world-region-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell confirmed">
-									<div class="inner">
-										<span class="table-cell-description">Підтверджено</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='world-confirmed-up'></span>
-											<span class="sort active sort-down" data-sort='world-confirmed-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell deaths">
-									<div class="inner">
-										<span class="table-cell-description">Померло</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='world-deaths-up'></span>
-											<span class="sort sort-down" data-sort='world-deaths-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell recovered">
-									<div class="inner">
-										<span class="table-cell-description">Одужало</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='world-recovered-up'></span>
-											<span class="sort sort-down" data-sort='world-recovered-down'></span>
-										</span>
-									</div>
-								</td>
-								<td class="table-cell table_head-cell confirmed_day">
-									<div class="inner">
-										<span class="table-cell-description">Підтверджено за минулу добу</span>
-										<span class="sort-wrapper">
-											<span class="sort sort-up" data-sort='world-recovered-up'></span>
-											<span class="sort sort-down" data-sort='world-recovered-down'></span>
-										</span>
-									</div>
-								</td>
-							</tr>
-						</thead>
-						<tbody class="table_body"></tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
-<div class="infographic">
-	<h2>Розподіл всіх підтверджених випадків захворювань</h2>
-	<div class="infographic-barchart"></div>
-</div>
+<body>
+	<div class="container main">
+		<div class="container container-calendar">
+			<input type="date" id="datePicker" min="2020-01-22">
+		</div>
+		<div class="tabs">
+			<div class="tabs_nav">
+				<a href="#ukraine" class="tabs_link tabs_link_active">Ukraine</a>
+				<a href="#world" class="tabs_link">World</a>
+			</div>
+			<div class="tabs_content">
+				<div id="ukraine" class="tabs_pane tabs_pane_show">
+					<h2>Ukraine</h2>
+					<div class="container">
+						<table class="table table-ua">
+							<thead class="table_head">
+								<tr class="table-row table_head-row">
+									<td class="table-cell table_head-cell region">
+										<div class="inner">
+											<span class="table-cell-description">Область</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='ukraine-region-up'></span>
+												<span class="sort sort-down" data-sort='ukraine-region-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell confirmed">
+										<div class="inner">
+											<span class="table-cell-description">Підтверджено</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='ukraine-confirmed-up'></span>
+												<span class="sort active sort-down" data-sort='ukraine-confirmed-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell deaths">
+										<div class="inner">
+											<span class="table-cell-description">Померло</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='ukraine-deaths-up'></span>
+												<span class="sort sort-down" data-sort='ukraine-deaths-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell recovered">
+										<div class="inner">
+											<span class="table-cell-description">Одужало</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='ukraine-recovered-up'></span>
+												<span class="sort sort-down" data-sort='ukraine-recovered-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell confirmed_day">
+										<div class="inner">
+											<span class="table-cell-description">Підтверджено за минулу добу</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='ukraine-recovered-up'></span>
+												<span class="sort sort-down" data-sort='ukraine-recovered-down'></span>
+											</span>
+										</div>
+									</td>
+								</tr>
+							</thead>
+							<tbody class="table_body"></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="world" class="tabs_pane">
+					<h2>World</h2>
+					<div class="container">
+						<table class="table table-world">
+							<thead class="table_head">
+								<tr class="table-row table_head-row">
+									<td class="table-cell table_head-cell region">
+										<div class="inner">
+											<span class="table-cell-description">Країна</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='world-region-up'></span>
+												<span class="sort sort-down" data-sort='world-region-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell confirmed">
+										<div class="inner">
+											<span class="table-cell-description">Підтверджено</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='world-confirmed-up'></span>
+												<span class="sort active sort-down" data-sort='world-confirmed-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell deaths">
+										<div class="inner">
+											<span class="table-cell-description">Померло</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='world-deaths-up'></span>
+												<span class="sort sort-down" data-sort='world-deaths-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell recovered">
+										<div class="inner">
+											<span class="table-cell-description">Одужало</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='world-recovered-up'></span>
+												<span class="sort sort-down" data-sort='world-recovered-down'></span>
+											</span>
+										</div>
+									</td>
+									<td class="table-cell table_head-cell confirmedDay">
+										<div class="inner">
+											<span class="table-cell-description">Підтверджено за минулу добу</span>
+											<span class="sort-wrapper">
+												<span class="sort sort-up" data-sort='world-recovered-up'></span>
+												<span class="sort sort-down" data-sort='world-recovered-down'></span>
+											</span>
+										</div>
+									</td>
+								</tr>
+							</thead>
+							<tbody class="table_body"></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="infographic">
+		<h2>Розподіл всіх підтверджених випадків захворювань</h2>
+		<div class="infographic-barchart"></div>
+	</div>
 
 	<script src="covid.js"></script>
 </body>
+
 </html>
