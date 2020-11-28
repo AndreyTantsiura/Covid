@@ -58,16 +58,8 @@ const htmlGenerate = (region) => {
 		resultTable += `<td class = "table-cell">${region[row].deaths}</td>`
 		resultTable += `<td class = "table-cell">${region[row].recovered}</td>`
 		resultTable += `<td class = "table-cell">${region[row].confirmedDay}</td>`
-		resultTable += `</tr>`
-		
+		resultTable += `</tr>`	
 	}
-		resultTable += `<tr class = "table-row total">`
-		resultTable += `<td class = "table-cell">Загальна кількість</td>`
-		resultTable += `<td class = "table-cell">${totalConfirmed}</td>`
-		resultTable += `<td class = "table-cell">${totalDeaths}</td>`
-		resultTable += `<td class = "table-cell">${totalRecovered}</td>`
-		resultTable += `<td class = "table-cell">${totalConfirmedDay}</td>`
-		resultTable += `</tr>`
 	return resultTable
 }
 
@@ -120,7 +112,10 @@ const dataOutput = async (date) => {
 		totalRecovered += item.recovered
 		totalConfirmedDay += item.confirmedDay
 	}
-	console.log(totalConfirmed, totalDeaths, totalRecovered, totalConfirmedDay)
+	document.querySelector('.total-ua-confirmed').innerText = totalConfirmed
+	document.querySelector('.total-ua-deaths').innerText = totalDeaths
+	document.querySelector('.total-ua-recovered').innerText = totalRecovered
+	document.querySelector('.total-ua-confirmedDay').innerText = totalConfirmedDay
 
 	for (var i = 0; i < world.length; i++) {
 		let item = world[i]
@@ -133,7 +128,10 @@ const dataOutput = async (date) => {
 		totalRecovered += item.recovered
 		totalConfirmedDay += item.confirmedDay
 	}
-	console.log(totalConfirmed, totalDeaths, totalRecovered, totalConfirmedDay)
+	document.querySelector('.total-world-confirmed').innerText = totalConfirmed
+	document.querySelector('.total-world-deaths').innerText = totalDeaths
+	document.querySelector('.total-world-recovered').innerText = totalRecovered
+	document.querySelector('.total-world-confirmedDay').innerText = totalConfirmedDay
 
 	defaultSort()
 
