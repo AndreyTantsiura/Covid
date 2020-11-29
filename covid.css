@@ -82,9 +82,6 @@ body {
 	justify-content: space-between;
 	align-items: center;
 }
-.confirmed_day .table-cell-description {
-	font-size: 0.8em;
-}
 .sort-wrapper {
 	width: 10px;
 	height: 25px;
@@ -124,6 +121,8 @@ body {
 }
 .total {
 	background-color: #f99;
+	border-bottom: none;
+	border-top: 1px solid #26354B;
 }
 .table-cell:last-child {
 	border-right: none;
